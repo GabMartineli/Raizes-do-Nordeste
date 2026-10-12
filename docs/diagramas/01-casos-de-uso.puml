@@ -1,0 +1,77 @@
+@startuml casos-de-uso
+' Diagrama de Casos de Uso (UML) — API Raízes do Nordeste
+' Renderize com a extensão PlantUML do VS Code ou em https://www.plantuml.com/plantuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor #FFF8E7
+  BorderColor #8B5E34
+}
+
+actor "Cliente\n(App / Web / Totem / Pickup)" as Cliente
+actor "Atendente\n(Balcão)" as Atendente
+actor "Cozinha" as Cozinha
+actor "Gerente\n(unidade)" as Gerente
+actor "Administrador\n(Matriz)" as Admin
+actor "Gateway de Pagamento\n(mock)" as Gateway <<sistema>>
+
+rectangle "API Raízes do Nordeste" {
+  usecase "UC01 Cadastrar-se / Autenticar" as UC01
+  usecase "UC02 Consultar cardápio da unidade" as UC02
+  usecase "UC03 Realizar pedido" as UC03
+  usecase "UC04 Solicitar pagamento" as UC04
+  usecase "UC05 Acompanhar pedido" as UC05
+  usecase "UC06 Cancelar pedido" as UC06
+  usecase "UC07 Atualizar status do pedido" as UC07
+  usecase "UC08 Aderir/revogar fidelidade\n(consentimento LGPD)" as UC08
+  usecase "UC09 Consultar saldo e extrato de pontos" as UC09
+  usecase "UC10 Movimentar e consultar estoque" as UC10
+  usecase "UC11 Gerenciar cardápio e preços" as UC11
+  usecase "UC12 Consolidar pedidos por canal" as UC12
+  usecase "UC13 Gerenciar unidades, produtos\ne funcionários" as UC13
+  usecase "UC14 Consultar auditoria" as UC14
+  usecase "UC15 Exercer direitos LGPD\n(acesso, correção, eliminação)" as UC15
+  usecase "Validar e reservar estoque" as INC1
+  usecase "Registrar auditoria" as INC2
+  usecase "Resgatar pontos" as EXT1
+}
+
+Cliente --> UC01
+Cliente --> UC02
+Cliente --> UC03
+Cliente --> UC04
+Cliente --> UC05
+Cliente --> UC06
+Cliente --> UC08
+Cliente --> UC09
+Cliente --> UC15
+
+Atendente --> UC03
+Atendente --> UC04
+Atendente --> UC06
+Atendente --> UC07
+
+Cozinha --> UC07
+
+Gerente --> UC06
+Gerente --> UC07
+Gerente --> UC10
+Gerente --> UC11
+Gerente --> UC12
+Gerente --> UC14
+
+Admin --> UC10
+Admin --> UC11
+Admin --> UC12
+Admin --> UC13
+Admin --> UC14
+
+UC04 --> Gateway
+UC06 ..> Gateway : estorno
+
+UC03 ..> INC1 : <<include>>
+UC03 ..> INC2 : <<include>>
+UC07 ..> INC2 : <<include>>
+EXT1 ..> UC03 : <<extend>>
+@enduml
