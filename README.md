@@ -1,5 +1,3 @@
-*USADO IA PARA CORRIGIR ERROS DE PORTUGUÊS E DEIXAR MAIS FACIL DE ENTENDER*
-
 # Raízes do Nordeste - API
 
 API back-end da rede de lanchonetes Raízes do Nordeste, feita para o Projeto Multidisciplinar (trilha Back-End, 2026).
