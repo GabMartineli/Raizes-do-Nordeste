@@ -6,7 +6,7 @@ API back-end da rede de lanchonetes Raízes do Nordeste, feita para o Projeto Mu
 
 A rede tem uma matriz e várias filiais, cada uma com cardápio, preços e estoque próprios. Os pedidos chegam por app, totem, balcão, pickup e site. O fluxo principal implementado é: o cliente faz o pedido, paga (pagamento simulado) e a cozinha atualiza o status até a entrega.
 
-- Repositório: https://github.com/SEU-USUARIO/raizes-do-nordeste
+- Repositório: https://github.com/GabMartineli/Raizes-do-Nordeste
 - Swagger (com a API rodando): http://localhost:3000/docs
 - Coleção do Postman: pasta `postman/`
 
